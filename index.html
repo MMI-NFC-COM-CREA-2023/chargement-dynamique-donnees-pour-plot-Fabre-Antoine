@@ -68,6 +68,7 @@
     </style>
 </head>
 <body>
+    
     <nav>
         <a href="#section1">Section 1</a>
         <a href="#section2">Section 2</a>
@@ -75,7 +76,7 @@
 
     <section>
         <h2 id="section1">Graph 1</h2>
-        <p>Ceci est le contenu textuel de la première section. Il peut contenir des informations importantes ou intéressantes relatives au sujet traité.</p>
+        <p>Ceci est le contenu de la première section. Il peut contenir des informations importantes ou intéressantes relatives au sujet traité.</p>
         
         <figure>
             <div id="graph1" class="graph"></div>
@@ -86,12 +87,18 @@
 
     <section>
         <h2 id="section2">Graph 2</h2>
-        <p>Voici le contenu textuel de la deuxième section. Cette partie peut aborder un autre aspect du sujet ou fournir des détails supplémentaires.</p>
+        <p>Voici le contenu de la deuxième section. Cette partie peut aborder un autre aspect du sujet ou fournir des détails supplémentaires.</p>
         
         <figure>
             <div id="graph2" class="graph"></div>
             <figcaption>Légende de l'image pour la section 2</figcaption>
         </figure>
     </section>
+    <script type="module">
+        import * as Plot from 'https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm';
+        const dataResponse = await fetch("./dataCorected.json");
+        const data = await dataResponse.json();
+        console.log(data);
+    </script>
 </body>
 </html>
