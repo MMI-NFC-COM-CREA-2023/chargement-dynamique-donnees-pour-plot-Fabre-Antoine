@@ -70,8 +70,8 @@
 <body>
     
     <nav>
-        <a href="#section1">Section 1</a>
-        <a href="#section2">Section 2</a>
+        <a href="#section1">Graph 1</a>
+        <a href="#section2">Graph 2</a>
     </nav>
 
     <section>
@@ -99,6 +99,26 @@
         const dataResponse = await fetch("./dataCorected.json");
         const data = await dataResponse.json();
         console.log(data);
+
+        const plot = Plot.plot({
+  x: { grid: true, label: "Années" },
+  y: { grid: true, label: "Gains en euro" },
+  color: { legend: true },
+  title: "Evolution des gains du vainqueur en grand chelem",
+  subtitle: "Evolution des gains du grand chelem de 1968 a 2023",
+  marginLeft: 75,
+  marks: [
+    Plot.lineY(data, {
+      x: "YEAR",
+      y: "Winner_Prize_EU",
+      stroke: "TOURNAMENT",
+      tip: true
+    })
+  ]
+})
+
+const div = document.querySelector("#graph1");
+div.append(plot)
     </script>
 </body>
 </html>
