@@ -76,7 +76,6 @@
 
     <section>
         <h2 id="section1">Graph 1</h2>
-        <p>Ceci est le contenu de la première section. Il peut contenir des informations importantes ou intéressantes relatives au sujet traité.</p>
         
         <figure>
             <div id="graph1" class="graph"></div>
@@ -86,9 +85,7 @@
     </section>
 
     <section>
-        <h2 id="section2">Graph 2</h2>
-        <p>Voici le contenu de la deuxième section. Cette partie peut aborder un autre aspect du sujet ou fournir des détails supplémentaires.</p>
-        
+        <h2 id="section2">Graph 2</h2>        
         <figure>
             <div id="graph2" class="graph"></div>
             <figcaption>Légende de l'image pour la section 2</figcaption>
@@ -119,6 +116,33 @@
 
 const div = document.querySelector("#graph1");
 div.append(plot)
+
+
+const dataResponse2 = await fetch("./victoiresApres2002.json");
+const data2 = await dataResponse2.json();
+console.log(data2);
+
+const plot2 = Plot.plot({
+  x: { label: "Tournois" },
+  y: { grid: true, label: "Vainqueurs" },
+  color: { legend: true },
+  title: "Domination du Big three de 2002 a 2023",
+  subtitle: "Nombre de victoires par tournoi du Big Three de 2002 a 2023",
+  marginLeft: 140,
+  marginBottom: 80,
+  marks: [
+    Plot.dot(
+      data2,
+      Plot.group(
+        { r: "count" },
+        { x: "TOURNAMENT", y: "WINNER", stroke: "TOURNAMENT", tip: true }
+      )
+    )
+  ]
+})
+
+const div2 = document.querySelector("#graph2");
+div2.append(plot2)
     </script>
 </body>
 </html>
