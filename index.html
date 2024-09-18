@@ -137,8 +137,8 @@
             <figcaption></figcaption>
         </figure>
     </section>
-    <script type="module">
-        import * as Plot from 'https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm';
+    <script>
+        (async () => {
         const dataResponse = await fetch("./dataCorected.json");
         const data = await dataResponse.json();
         console.log(data);
@@ -162,8 +162,9 @@
 
 const div = document.querySelector("#graph1");
 div.append(plot)
+})();
 
-
+(async () => {
 const dataResponse2 = await fetch("./victoiresApres2002.json");
 const data2 = await dataResponse2.json();
 console.log(data2);
@@ -189,6 +190,9 @@ const plot2 = Plot.plot({
 
 const div2 = document.querySelector("#graph2");
 div2.append(plot2)
+})();
     </script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
 </body>
 </html>
